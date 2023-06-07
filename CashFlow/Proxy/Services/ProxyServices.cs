@@ -1,5 +1,6 @@
 ﻿using CashFlow.Context;
 using CashFlow.Services;
+using CryptoSecurity.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Proxy.Services
         private readonly CashFlowContext? CashFlowContext;
 
         public ICashFlowServices CashFlow => new CashFlowActionsServices(CashFlowContext);
+
+        public ICryptoServices CryptoServices => new CryptoServices();
 
         public ProxyServices() { }
 

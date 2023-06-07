@@ -1,0 +1,26 @@
+﻿var JSResource =
+{
+    ErrorRequest: "<strong>Ops!</strong> Erro ao executar a operação. Verifique se o servidor está on-line",
+    MsgNotificationsViewedFailed: "<strong>Ops!</strong> Falha ao visualizar a notificação.",
+    Pending: "Pendente",
+    Inactive: "Inativo",
+    Active: "Ativo",
+    Action: "Ação",
+    Advance: "Avançado",
+    Account: "Conta",
+    Actions: "Ações",
+    UserName: "Nome de usuário",
+    Address: "Endereço",
+    AddType: "Cadastro de {0}",
+    Conclude: "Concluir",
+    MsgInsertDataField: "<strong>Ops! </strong> Você precisa preencher o campo",
+    ErrorSelectField: "<strong>Ops! </strong> Você precisa selecionar o campo ",
+    Attached: "anexado",
+    AttachNF: "Anexar NF",
+    LostPassword: "Esqueceu sua senha?",
+    Advertising: "Anúncios",
+    Allowed: "Autorizado",
+    SendRequest: "Enviar solicitação",
+    ActivateRegister: "Ativar Registro",
+    InactivateRegister: "Desativar Registro"
+};
