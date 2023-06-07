@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Logs\" />
     <Folder Include="Views\" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>

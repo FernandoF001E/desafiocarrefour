@@ -122,7 +122,7 @@ namespace WebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action}/{id?}",
-                    defaults: new { controller = "Home", action = "Index" });
+                    defaults: new { controller = "Authentication", action = "Index" });
             });
         }
 
