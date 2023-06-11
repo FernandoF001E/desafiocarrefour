@@ -1,0 +1,50 @@
+﻿@{
+    var BaseUrl = String.Format("http://{0}", @Context.Request.Host);
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Financial Records
+        <small>Control panel</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li>
+            <a><i class="fa fa-dashboard"></i> Home</a>
+        </li>
+        <li class="active">Reports</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="tab-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Pesquisa de Usuários</h3>
+                    </div>
+                    <form method="post" name="frmFinancialReports" id="frmFinancialReports" action="">
+                        <div class="box-body">
+                            <div class="row-form">
+                                <div class="col-md-4 form-group">
+                                    <label for="txtSearchDate"><span class="text-danger">*</span> Date</label>
+                                    <div class="input-group date">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input type="text" class="form-control pull-right" onkeydown="javascript: fJS_Mask( this, mData );" maxlength="10" name="txtSearchDate" id="txtSearchDate">
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" id="btnSearch" class="btn btn-info"><i class="fa fa-search"></i> Gerar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/financialreports.js" type="text/javascript"></script>

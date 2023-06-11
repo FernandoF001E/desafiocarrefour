@@ -15,13 +15,16 @@ namespace CashFlow.Data
     {
         [Key, Column("financialrecordsid")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int FinancialRecordsidId { get; set; }
+        public int FinancialRecordsId { get; set; }
 
         [Column("description")]
         public string Description { get; set; }
 
         [Column("financialvalue")]
         public decimal FinancialValue { get; set; }
+
+        [Column("daterecords")]
+        public DateTime DateRecords { get; set; }
 
         [Column("recordtype")]
         public ERecordType RecordType { get; set; }
@@ -40,9 +43,14 @@ namespace CashFlow.Data
 
         public FinancialRecords() { }
 
-        public FinancialRecords(int financialrecordsid)
+        public FinancialRecords(int financialrecordsid, string description, DateTime dateRecords, decimal financialValue, ERecordType recordType, string observation)
         {
-            FinancialRecordsidId = financialrecordsid;
+            FinancialRecordsId = financialrecordsid;
+            Description = description;
+            DateRecords = dateRecords;
+            FinancialValue = financialValue;
+            RecordType = recordType;
+            Observation = observation;
         }
     }
 }

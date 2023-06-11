@@ -46,9 +46,10 @@ $("#btnLogin").click(function () {
         data: dataForm,
         dataType: 'json',
         success: function (response) {
+            debugger
             var obj = response;
             if (obj != null && parseInt(obj.code) == 0) {
-                window.location = base_url + '/dashboard/index';
+                window.location = base_url + '/financialrecords/index';
             } else if (obj != null && parseInt(obj.code) == NOTFOUND) {
                 $(window).scrollTop(0);
                 fJS_ShowError(obj.message);

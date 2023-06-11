@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Proxy.Services;
+using System;
 using WebApp.Helpers;
 
 namespace WebApp.Controllers
@@ -18,6 +19,58 @@ namespace WebApp.Controllers
         private int _index = 0;
         public int _countData = 0;
         public int _totalPages = 0;
+
+        public int PagingLimit
+        {
+            get
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(Request.Query["limit"]))
+                    {
+                        _limit = Convert.ToInt32(Request.Query["limit"]);
+                    }
+                }
+                catch
+                {
+                    //--> Ignore
+                }
+                return _limit;
+            }
+            set => _limit = value;
+        }
+
+        public int PagingIndex
+        {
+            get
+            {
+                try
+                {
+                    if (!string.IsNullOrEmpty(Request.Query["index"]))
+                    {
+                        _index = Convert.ToInt32(Request.Query["index"]);
+                    }
+                }
+                catch
+                {
+                    //--> Ignore
+                }
+                return _index;
+            }
+            set => _index = value;
+        }
+
+        public int PagingCount
+        {
+            get => _countData;
+            set => _countData = value;
+        }
+
+        public int PagingTotal
+        {
+            get => _totalPages;
+            set => _totalPages = value;
+        }
 
         public ApplicationConfig AppConfigOptions;
 
