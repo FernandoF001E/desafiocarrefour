@@ -13,11 +13,6 @@ using CashFlow.Model;
 using System.Collections.Generic;
 using CashFlow.Reports.Model;
 using WebApp.Helpers;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
-using Grpc.Core;
-using System.Net;
-using iTextSharp.text.pdf.parser;
 
 namespace WebApp.Controllers.Reports
 {
@@ -101,7 +96,7 @@ namespace WebApp.Controllers.Reports
                     FinancialRecordsReports financialrecordsReports = new();
                     doc.Open();
                     
-                    doc.Add(financialrecordsReports.Add_Content_To_PDF(tableLayout, listFinancialRecords));
+                    doc.Add(financialrecordsReports.AddContentToPDF(tableLayout, listFinancialRecords));
                     
                     doc.Close();
 

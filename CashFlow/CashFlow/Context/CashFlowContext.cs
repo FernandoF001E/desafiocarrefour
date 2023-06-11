@@ -1,4 +1,5 @@
 ﻿using CashFlow.Data;
+using CashFlow.Data.InitialData;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,6 +26,7 @@ namespace CashFlow.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Account>().HasData(InitialDataAccount.Account);
+            modelBuilder.Entity<FinancialRecords>().HasData(InitialDataFinancialRecords.FinancialRecords);
         }
     }
 }

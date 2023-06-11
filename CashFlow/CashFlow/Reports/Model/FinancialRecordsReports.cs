@@ -12,7 +12,7 @@ namespace CashFlow.Reports.Model
 {
     public  class FinancialRecordsReports
     {
-        public PdfPTable Add_Content_To_PDF(PdfPTable tableLayout, List<FinancialRecords> financialRecords)
+        public PdfPTable AddContentToPDF(PdfPTable tableLayout, List<FinancialRecords> financialRecords)
         {
             float[] headers = { 15, 35, 20, 20, 20 };
 

@@ -10,12 +10,6 @@ using WebApp.Helpers;
 using CashFlow.Model;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
-using System;
-using iTextSharp.text.pdf;
-using System.IO;
-using iTextSharp.text;
-using System.Diagnostics;
-using Grpc.Core;
 using Microsoft.AspNetCore.Hosting;
 
 namespace WebApp.Controllers.Common
@@ -23,11 +17,9 @@ namespace WebApp.Controllers.Common
     public class FinancialRecordsController : ControllerBase
     {
         private readonly CashFlowContext _cashflowContext;
-        private readonly IWebHostEnvironment IWebHostEnvironment;
-        public FinancialRecordsController(IWebHostEnvironment iwebHostEnvironment, CashFlowContext cashflowContext) : base(iwebHostEnvironment, cashflowContext)
+        public FinancialRecordsController(CashFlowContext cashflowContext) : base(cashflowContext)
         {
             _cashflowContext = cashflowContext;
-            IWebHostEnvironment = iwebHostEnvironment;
         }
 
         public IActionResult Index()
@@ -53,8 +45,10 @@ namespace WebApp.Controllers.Common
             }
             else
             {
-                FinancialRecordsInputFilter financialrecordsInputFilterInput = new();
-                financialrecordsInputFilterInput.Description = Request.Form["searchDescription"].ToString().Trim();
+                FinancialRecordsInputFilter financialrecordsInputFilterInput = new()
+                {
+                    Description = Request.Form["searchDescription"].ToString().Trim()
+                };
                 var dateRecords = "";
                 if (!string.IsNullOrEmpty(Request.Form["searchDate"].ToString().Trim()))
                 {

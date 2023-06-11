@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CashFlow.Migrations
 {
     [DbContext(typeof(CashFlowContext))]
-    [Migration("20230609140001_altertable_financialrecords")]
-    partial class altertable_financialrecords
+    [Migration("20230611043938_initial_data")]
+    partial class initial_data
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -65,7 +65,7 @@ namespace CashFlow.Migrations
                         {
                             AccountId = 1,
                             Email = "carrefour@teste.com.br",
-                            InsertDate = new DateTime(2023, 6, 9, 10, 59, 59, 471, DateTimeKind.Local).AddTicks(7221),
+                            InsertDate = new DateTime(2023, 6, 11, 1, 39, 37, 99, DateTimeKind.Local).AddTicks(6001),
                             Name = "Teste Carrefour",
                             Password = "2A9FA926BA9A2696ECAAF9B344A8E5DDC5673CB412F9919F0BA9AEE6735C562718EF8AB45F509C70C1048D2E734AC0782B401026C3967211FD766CD861AEE03E",
                             RecordStatus = 1
@@ -114,6 +114,48 @@ namespace CashFlow.Migrations
                     b.HasKey("FinancialRecordsId");
 
                     b.ToTable("financialrecords");
+
+                    b.HasData(
+                        new
+                        {
+                            FinancialRecordsId = 1,
+                            DateRecords = new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Mercado",
+                            FinancialValue = 500m,
+                            InsertDate = new DateTime(2023, 6, 11, 1, 39, 37, 113, DateTimeKind.Local).AddTicks(7820),
+                            RecordStatus = 1,
+                            RecordType = 1
+                        },
+                        new
+                        {
+                            FinancialRecordsId = 2,
+                            DateRecords = new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Loja",
+                            FinancialValue = 600m,
+                            InsertDate = new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(206),
+                            RecordStatus = 1,
+                            RecordType = 1
+                        },
+                        new
+                        {
+                            FinancialRecordsId = 3,
+                            DateRecords = new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Farmácia",
+                            FinancialValue = 1200m,
+                            InsertDate = new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(235),
+                            RecordStatus = 1,
+                            RecordType = 1
+                        },
+                        new
+                        {
+                            FinancialRecordsId = 4,
+                            DateRecords = new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Salario",
+                            FinancialValue = 10000m,
+                            InsertDate = new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(251),
+                            RecordStatus = 1,
+                            RecordType = 2
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -13,4 +13,8 @@
     <ProjectReference Include="..\AbstractModel\AbstractModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

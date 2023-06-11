@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CashFlow.Migrations
 {
-    /// <inheritdoc />
-    public partial class initialdata : Migration
+    public partial class initial_data : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
@@ -101,6 +99,7 @@ namespace CashFlow.Migrations
                     description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     financialvalue = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
+                    daterecords = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     recordtype = table.Column<int>(type: "int", nullable: false),
                     observation = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -244,7 +243,18 @@ namespace CashFlow.Migrations
             migrationBuilder.InsertData(
                 table: "account",
                 columns: new[] { "accountid", "email", "insertdate", "lastaccess", "name", "password", "recordstatus", "updatedate" },
-                values: new object[] { 1, "carrefour@teste.com.br", new DateTime(2023, 6, 7, 9, 21, 11, 905, DateTimeKind.Local).AddTicks(6320), null, "Teste Carrefour", "2A9FA926BA9A2696ECAAF9B344A8E5DDC5673CB412F9919F0BA9AEE6735C562718EF8AB45F509C70C1048D2E734AC0782B401026C3967211FD766CD861AEE03E", 1, null });
+                values: new object[] { 1, "carrefour@teste.com.br", new DateTime(2023, 6, 11, 1, 39, 37, 99, DateTimeKind.Local).AddTicks(6001), null, "Teste Carrefour", "2A9FA926BA9A2696ECAAF9B344A8E5DDC5673CB412F9919F0BA9AEE6735C562718EF8AB45F509C70C1048D2E734AC0782B401026C3967211FD766CD861AEE03E", 1, null });
+
+            migrationBuilder.InsertData(
+                table: "financialrecords",
+                columns: new[] { "financialrecordsid", "daterecords", "description", "financialvalue", "insertdate", "observation", "recordstatus", "recordtype", "updatedate" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Mercado", 500m, new DateTime(2023, 6, 11, 1, 39, 37, 113, DateTimeKind.Local).AddTicks(7820), null, 1, 1, null },
+                    { 2, new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Loja", 600m, new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(206), null, 1, 1, null },
+                    { 3, new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Farmácia", 1200m, new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(235), null, 1, 1, null },
+                    { 4, new DateTime(2023, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "Salario", 10000m, new DateTime(2023, 6, 11, 1, 39, 37, 114, DateTimeKind.Local).AddTicks(251), null, 1, 2, null }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -284,7 +294,6 @@ namespace CashFlow.Migrations
                 unique: true);
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
