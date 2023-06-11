@@ -8,21 +8,23 @@ namespace Helpers.General
 {
     public class JsonResultSummary<T> where T : class, new()
     {
-        public ECodeReturn Code { get; set; }
+        public ECodeReturn? Code { get; set; }
 
-        public string Message { get; set; }
+        public string? Message { get; set; }
+        
+        public string? XPath { get; set; }
 
-        public int Count { get; set; }
+        public int? Count { get; set; }
 
-        public int TotalPages { get; set; }
+        public int? TotalPages { get; set; }
 
-        public int PagingLimit { get; set; }
+        public int? PagingLimit { get; set; }
 
-        public int PagingIndex { get; set; }
+        public int? PagingIndex { get; set; }
 
-        public IEnumerable<T> Data { get; set; }
+        public IEnumerable<T>? Data { get; set; }
 
-        public Exception ResultException { get; set; }
+        public Exception? ResultException { get; set; }
   
         public JsonResultSummary() { }
 
@@ -31,6 +33,7 @@ namespace Helpers.General
             Code = ECodeReturn.RECORDSELECT;
             Message = message;
         }
+
         public JsonResultSummary(IEnumerable<T> dataList)
         {
             Code = ECodeReturn.SUCCESS;
@@ -58,6 +61,24 @@ namespace Helpers.General
             PagingLimit = limit;
             PagingIndex = index;
         }
+
+        public JsonResultSummary(IEnumerable<T> dataList, int limit, int index, int totalData, int totalPages, string xPath)
+        {
+            Code = ECodeReturn.SUCCESS;
+            Message = "Success";
+
+            if (dataList != null)
+            {
+                Data = dataList;
+            }
+
+            Count = totalData;
+            TotalPages = totalPages;
+            PagingLimit = limit;
+            PagingIndex = index;
+            XPath = xPath;
+        }
+
         public JsonResultSummary(Exception ex)
         {
             SetException(ex, false);

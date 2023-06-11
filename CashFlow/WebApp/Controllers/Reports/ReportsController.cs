@@ -13,6 +13,11 @@ using CashFlow.Model;
 using System.Collections.Generic;
 using CashFlow.Reports.Model;
 using WebApp.Helpers;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Diagnostics;
+using Grpc.Core;
+using System.Net;
+using iTextSharp.text.pdf.parser;
 
 namespace WebApp.Controllers.Reports
 {
@@ -68,6 +73,7 @@ namespace WebApp.Controllers.Reports
                     };
 
                     IEnumerable<FinancialRecords> result = IProxyServices.CashFlow.FinancialRecords.GetAllReport(financialrecordsInputFilterInput, inputTable.Limit, inputTable.Index, out _countData, out _totalPages);
+
                     if (result != null)
                     {
                         listFinancialRecords = new List<FinancialRecords>();
@@ -78,17 +84,30 @@ namespace WebApp.Controllers.Reports
                         }
                     }
 
-                    var xPath = IWebHostEnvironment.ContentRootPath + "\\Reports\\relatorio" + dateRecords + ".pdf";
+                    string returnName = string.Format("{0}_RELATORIO.pdf", DateTime.Now.ToString("yyyyMM"));
+                    string pathTemp = IWebHostEnvironment.ContentRootPath + "\\Reports";
+                    string filename = string.Format("{0}\\{1}", pathTemp, returnName);
+
+                    FileInfo file = new(filename);
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
+
                     Document doc = new();
                     PdfPTable tableLayout = new(5);
                     
-                    PdfWriter.GetInstance(doc, new FileStream(xPath, FileMode.Create));
+                    PdfWriter.GetInstance(doc, new FileStream(filename, FileMode.Create));
                     FinancialRecordsReports financialrecordsReports = new();
                     doc.Open();
                     
                     doc.Add(financialrecordsReports.Add_Content_To_PDF(tableLayout, listFinancialRecords));
                     
                     doc.Close();
+
+                    byte[] pdfByteArray = System.IO.File.ReadAllBytes(filename);
+                    string base64EncodedPDF = System.Convert.ToBase64String(pdfByteArray);
+                    summary = new JsonResultSummary<FinancialRecords>(result, inputTable.Limit, inputTable.Index, PagingCount, PagingTotal, base64EncodedPDF);
                 }
                 catch (Exception ex)
                 {

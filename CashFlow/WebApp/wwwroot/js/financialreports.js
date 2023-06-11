@@ -1,5 +1,9 @@
 ﻿var nLimits = "10";
 
+$("#txtSearchDate").datepicker({
+    autoclose: true
+});
+
 $("#btnReport").click(function () {
     $.ajax({
         url: base_url + '/reports/financialrecordsreport',
@@ -9,8 +13,10 @@ $("#btnReport").click(function () {
         },
         success: function (response) {
             var obj = response;
+            debugger
             if (obj != null && parseInt(obj.code) == SUCCESS) {
-                //Abrir new windows
+                let pdfWindows = window.open("");
+                pdfWindows.document.write("<iframe width=100%' height='100%' src='data:application/pdf;base64," + encodeURI(obj.xPath) + "'></iframe>")
             }
             else if (obj != null && parseInt(obj.code) == SESSION_EXPIRED) {
                 $(window).scrollTop(0);
