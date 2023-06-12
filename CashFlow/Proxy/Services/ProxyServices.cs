@@ -12,6 +12,7 @@ namespace Proxy.Services
     public class ProxyServices : IProxyServices
     {
         private readonly CashFlowContext? CashFlowContext;
+        private readonly IProxyServices? _iProxyServices;
 
         public ICashFlowServices CashFlow => new CashFlowActionsServices(CashFlowContext);
 

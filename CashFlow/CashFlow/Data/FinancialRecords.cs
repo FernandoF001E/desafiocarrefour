@@ -1,4 +1,5 @@
-﻿using Helpers.General;
+﻿using CashFlow.Model;
+using Helpers.General;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

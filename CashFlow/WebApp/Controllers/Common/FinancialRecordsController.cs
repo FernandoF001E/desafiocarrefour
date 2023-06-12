@@ -47,7 +47,7 @@ namespace WebApp.Controllers.Common
             {
                 FinancialRecordsInputFilter financialrecordsInputFilterInput = new()
                 {
-                    Description = Request.Form["searchDescription"].ToString().Trim()
+                    Description = string.IsNullOrEmpty(Request.Form["searchDescription"].ToString().Trim()) ? "" : Request.Form["searchDescription"].ToString().Trim()
                 };
                 var dateRecords = "";
                 if (!string.IsNullOrEmpty(Request.Form["searchDate"].ToString().Trim()))
@@ -134,9 +134,11 @@ namespace WebApp.Controllers.Common
         {
             FinancialRecords obj = new();
             JsonReturn<FinancialRecords> result = new();
+            using var transaction = _cashflowContext.Database.BeginTransaction();
             if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionUserKey)))
             {
                 result.SetSessionExpired();
+                transaction.Rollback();
             }
             else
             {
@@ -148,6 +150,7 @@ namespace WebApp.Controllers.Common
                     }
 
                     result.SetSuccess(obj);
+                    transaction.Commit();
                 }
                 catch (Exception ex)
                 {
@@ -203,5 +206,6 @@ namespace WebApp.Controllers.Common
             }
             return result;
         }
+
     }
 }
