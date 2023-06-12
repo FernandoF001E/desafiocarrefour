@@ -29,3 +29,10 @@ docker-compose -f docker/docker-compose.yml up -d
 
 Entrar na pasta do projeto e executar dotnet run. Será executado o migration onde irá criar a base de dados e as tabelas.
 No arquivo application.json na tag ConnectionString esta localizado o endereço da base de dados.
+
+### Utilização do serviço:
+
+Existe dois menus, Financial Records e Report.
+- [Financial Records]: Na Tab Cadastro é onde será cadastrados os lançamentos tanto de débito quando crédito e listados na grid na tab Search. Tab Search é possível filtrar e localizar os registros.
+- [Report]: Listagem dos lançamentos em relatório já consolidados.
+
