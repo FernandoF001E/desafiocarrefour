@@ -27,7 +27,7 @@ docker-compose -f docker/docker-compose.yml up -d
 ````
 ### Execução do projeto sem utilizar docker:    
 
-Entrar na pasta do projeto e executar dotnet run. Será executado o migration onde irá criar a base de dados e as tabelas.
+Entrar na pasta do projeto e executar `dotnet run`. Será executado o `migration` onde irá criar a base de dados e as tabelas.
 No arquivo application.json na tag ConnectionString esta localizado o endereço da base de dados.
 
 ### Utilização do serviço:
