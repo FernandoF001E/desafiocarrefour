@@ -1,3 +1,4 @@
+![Diagrama_MDL](https://github.com/FernandoF001E/desafiocarrefour/assets/13554875/3471f9fe-5bd6-4459-9565-94203b7a2e32)
 Desafio Carrefour
 
 Projeto responsável por realizar fluxo de caixa com relatório consolidado com banco de dados Mysql
@@ -35,4 +36,10 @@ No arquivo application.json na tag ConnectionString esta localizado o endereço 
 Existe dois menus, Financial Records e Report.
 - [Financial Records]: Na Tab Cadastro é onde será cadastrados os lançamentos tanto de débito quando crédito e listados na grid na tab Search. Tab Search é possível filtrar e localizar os registros.
 - [Report]: Listagem dos lançamentos em relatório já consolidados.
+
+### Dados do Login:
+
+Na inicialização já é criado o usuário `testecarrefour@teste.com.br` e a senha `f231206`. Esses dados são criado pelo InitialDataAccount.
+Também serão cadastrados na inicialização 4 lançamentos sendo 2 débitos e 1 crédito
+
 
