@@ -1,9 +1,7 @@
- cadpos-audit-service
+Desafio Carrefour
 
-Projeto responsável por consumir mensagens da fila AWS SQS e salvar dados de auditoria na tabelas do AWS RDS PostgreSQS
+Projeto responsável por realizar fluxo de caixa com relatório consolidado com banco de dados Mysql
 
 ## Pré-requisitos
 
-- [Docker](https://www.docker.com/)
-- [Maven](https://maven.apache.org/)
-- [Java 11](https://jdk.java.net/archive/)
+- [.NETCore 6.0]([https://www.docker.com/](https://dotnet.microsoft.com/pt-br/download/dotnet/6.0))
